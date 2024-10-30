@@ -12,7 +12,7 @@ ${contraseña-valida}=           bancard2024
 ${usuario-no-valido}=           miguel@gmail.com
 ${contraseña-no-valida}=        Hola12345
 ${formato-invalido}=            miguelesquivel
-${correo-de-prueba}=            migueesquivelrios@gmail.com     # Inicio de sesion C003
+${correo-de-prueba}=            carlos.villalba@bancard.com.py    # Inicio de sesion C003
 
 #${reseteo-de-correo}=           nestor.ortigoza@bancard.com.py
 ${reseteo-de-correo}=           evely2.pineda@bancard.com.py
