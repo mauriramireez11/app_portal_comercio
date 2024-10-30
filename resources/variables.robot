@@ -7,8 +7,8 @@ Library    AppiumLibrary
 #${usuario-valido}=              marcelo.caceres@bancard.com.py
 #${contraseña-valida}=           Bancard2024**
 #Usuario Testing
-${usuario-valido}=              miguel.esquivel@bancard.com.py
-${contraseña-valida}=           Hola123456
+${usuario-valido}=              carlos.villalba@bancard.com.py
+${contraseña-valida}=           bancard2024
 ${usuario-no-valido}=           miguel@gmail.com
 ${contraseña-no-valida}=        Hola12345
 ${formato-invalido}=            miguelesquivel
