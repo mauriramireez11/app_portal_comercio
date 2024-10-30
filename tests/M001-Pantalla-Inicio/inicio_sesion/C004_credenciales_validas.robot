@@ -40,11 +40,13 @@ Cerrar sesion
     # Verificar que estamos en la pantalla correcta antes de empezar
     Wait Until Page Contains    Resumen diario    10s
     
-    # Esperar y hacer click en el botón de menú
-    Wait Until Element Is Visible    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.Button/com.horcrux.svg.SvgView
-    10s
-    Click Element    xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.Button/com.horcrux.svg.SvgView
-
+    # Opción 1: Usando UiSelector (más preciso)
+    Wait Until Element Is Visible    android=new UiSelector().className("com.horcrux.svg.z").instance(0)    10s
+    Click Element    android=new UiSelector().className("com.horcrux.svg.z").instance(0)
+    
+    # Opción 2: Usando un xpath más corto pero específico (alternativa)
+    # Wait Until Element Is Visible    xpath=//android.widget.Button/com.horcrux.svg.SvgView    10s
+    # Click Element    xpath=//android.widget.Button/com.horcrux.svg.SvgView
     
     # Esperar y hacer click en Cerrar sesión
     Wait Until Element Is Visible    xpath=//*[contains(@text, "Cerrar sesión")]    10s
