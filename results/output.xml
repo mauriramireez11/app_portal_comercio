@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.11.2 on darwin)" generated="2024-10-29T14:30:52.838123" rpa="false" schemaversion="5">
+<suite id="s1" name="C001 Envío de Mensaje en WhatsApp" source="/Users/mactesting/Desktop/qa_bancard/repos/App-Portal-de-comercios-release/Suite de pruebas/M001-Pantalla-Inicio/Chatear con un asesor/C001 Envío de Mensaje en WhatsApp.robot">
+<test id="s1-t1" name="Prueba de Envío de Mensaje" line="11">
+<kw name="Conectar dispositivo" owner="keywords">
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>http://127.0.0.1:4723</arg>
+<arg>platformName=Android</arg>
+<arg>platformVersion=14</arg>
+<arg>deviceName=a23</arg>
+<arg>automationName=UiAutomator2</arg>
+<arg>appPackage=com.bancard.portaldecomercios</arg>
+<arg>appActivity=com.bancard.portaldecomercios.MainActivity</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2024-10-29T14:30:53.788387" elapsed="7.985265"/>
+</kw>
+<status status="PASS" start="2024-10-29T14:30:53.787820" elapsed="7.985989"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-10-29T14:31:03.774302" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-10-29T14:31:01.774027" elapsed="2.000377"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Chatear con un asesor</arg>
+<arg>10s</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2024-10-29T14:31:03.774709" elapsed="0.174374"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-10-29T14:31:03.951286" level="INFO">Clicking element 'xpath=//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup'.</msg>
+<msg time="2024-10-29T14:31:06.992402" level="INFO">xpath criteria: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup</msg>
+<arg>xpath=//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-10-29T14:31:03.949337" elapsed="3.043167"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Hola, tengo problemas para iniciar sesión, ¿pueden ayudarme?</arg>
+<arg>10s</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2024-10-29T14:31:06.992786" elapsed="0.180899"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="AppiumLibrary">
+<msg time="2024-10-29T14:31:08.457411" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Prueba%20de%20Env%C3%ADo%20de%20Mensaje.png"&gt;&lt;img src="Prueba%20de%20Env%C3%ADo%20de%20Mensaje.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${TEST NAME}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="PASS" start="2024-10-29T14:31:07.173967" elapsed="1.283564"/>
+</kw>
+<kw name="Go Back" owner="AppiumLibrary">
+<doc>Goes one step backward in the browser history.</doc>
+<status status="PASS" start="2024-10-29T14:31:08.457771" elapsed="0.642372"/>
+</kw>
+<kw name="Go Back" owner="AppiumLibrary">
+<doc>Goes one step backward in the browser history.</doc>
+<status status="PASS" start="2024-10-29T14:31:09.100391" elapsed="2.156481"/>
+</kw>
+<kw name="Close Application" owner="AppiumLibrary">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" start="2024-10-29T14:31:11.257084" elapsed="0.557859"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Close Application</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2024-10-29T14:31:11.815294" elapsed="0.000126"/>
+</kw>
+<doc>Este test verifica que se pueda enviar un mensaje en WhatsApp.</doc>
+<status status="PASS" start="2024-10-29T14:30:53.787209" elapsed="18.028295"/>
+</test>
+<doc>Prueba de Envío de Mensaje en WhatsApp.</doc>
+<status status="PASS" start="2024-10-29T14:30:52.840114" elapsed="18.975800"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="C001 Envío de Mensaje en WhatsApp">C001 Envío de Mensaje en WhatsApp</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

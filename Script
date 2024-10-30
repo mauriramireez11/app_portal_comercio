@@ -1,0 +1,13 @@
+-- Inicio de sesion --
+
+/* Igualar failed_attempts la cantidad de fallos a cero */
+/* Igualar blocked la cantidad a cero */
+
+select failed_attempts,blocked,a.* from auth_service_production.user_credentials a where email = 'migueesquivelrios@gmail.com';
+
+-- Creacion de usuario --
+
+/* Eliminamos el usuario de prueba */
+
+select * from auth_service_production.user_credentials where email = 'miguel.esquivel+5@bancard.com.py';  -- Correo de prueba eliminamos despues de haber eliminado id
+
