@@ -17,6 +17,7 @@ Primer intento
      Input text                 xpath=//android.widget.EditText[@content-desc="Contraseña"]                             ${contraseña-no-valida}
      Click element              xpath=//android.widget.TextView[@text='Iniciar sesión']
      Wait until page contains   Email o Contraseña incorrecto    10s
+     Sleep    8s
      Capture Page Screenshot    ${TEST NAME}.png
 
 Segundo intento
@@ -27,6 +28,7 @@ Segundo intento
      Input text                 xpath=//android.widget.EditText[@content-desc="Contraseña"]                             ${contraseña-no-valida}
      Click element              xpath=//android.widget.TextView[@text='Iniciar sesión']
      Wait until page contains   Email o Contraseña incorrecto    10s
+     Sleep    8s
      Capture Page Screenshot    ${TEST NAME}.png
 
 Tercer intento
@@ -37,6 +39,7 @@ Tercer intento
      Input text                 xpath=//android.widget.EditText[@content-desc="Contraseña"]                             ${contraseña-no-valida}
      Click element              xpath=//android.widget.TextView[@text='Iniciar sesión']
      Wait until page contains   Email o Contraseña incorrecto    10s
+     Sleep    8s
      Capture Page Screenshot    ${TEST NAME}.png
 
 Cuarto intento
@@ -47,6 +50,7 @@ Cuarto intento
      Input text                 xpath=//android.widget.EditText[@content-desc="Contraseña"]                             ${contraseña-no-valida}
      Click element              xpath=//android.widget.TextView[@text='Iniciar sesión']
      Wait until page contains   Credenciales inválidas, un nuevo intento fallido bloqueará la cuenta   10s
+     Sleep    8s
      Capture Page Screenshot    ${TEST NAME}.png
 
 Quinto intento
@@ -57,6 +61,7 @@ Quinto intento
      Input text                 xpath=//android.widget.EditText[@content-desc="Contraseña"]                             ${contraseña-no-valida}
      Click element              xpath=//android.widget.TextView[@text='Iniciar sesión']
      Wait until page contains   Cuenta temporalmente bloqueada, contacta a soporte comercial   10s
+     Sleep    8s   
      Capture Page Screenshot    ${TEST NAME}.png
      Close Application
 
