@@ -40,8 +40,12 @@ Login To App
     Input Text    ${EMAIL_INPUT}    ${usuario-valido}      # Ingresa el email
     Input Text    ${PASSWORD_INPUT}    ${contraseña-valida}    # Ingresa la contraseña
     Click Element    ${LOGIN_BUTTON}               # Click en iniciar sesión
-    Wait Until Page Contains    Ingreso con huella o reconocimiento facial    ${TIMEOUT}    # Espera pantalla de biometría
-    Click Element    ${BIOMETRIC_SKIP}             # Salta la configuración de biometría
+    
+    # Maneja la pantalla de biometría solo si aparece
+    ${biometric_present}=    Run Keyword And Return Status    
+    ...    Wait Until Page Contains    Ingreso con huella o reconocimiento facial    5s
+    Run Keyword If    ${biometric_present}    Click Element    ${BIOMETRIC_SKIP}
+    
     Wait Until Page Contains    Resumen diario    ${TIMEOUT}    # Verifica que llegó al dashboard
 
 Navigate To Users
