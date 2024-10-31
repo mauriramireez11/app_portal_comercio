@@ -32,6 +32,11 @@ ${DATE_DAY_COORDS}         305  1639  297  1824    # Coordenadas para swipe del 
 ${TIMEOUT}                 10s    # Timeout estándar
 ${LONG_TIMEOUT}           30s    # Timeout largo para operaciones que requieren más tiempo
 
+# Selectores de navegación
+${USERS_SECTION_X}    360    # Mitad del ancho (720/2)
+${USERS_SECTION_Y}    954    # Punto medio del alto ((1510-399)/2 + 399)
+${USERS_BUTTON}       xpath=//android.widget.TextView[@text="Usuarios" and @bounds="[0,399][720,1510]"]
+
 *** Keywords ***
 Login To App
     [Documentation]    Realiza el proceso de login en la aplicación
@@ -49,10 +54,18 @@ Login To App
     Wait Until Page Contains    Resumen diario    ${TIMEOUT}    # Verifica que llegó al dashboard
 
 Navigate To Users
-    [Documentation]    Navega a la sección de usuarios
-    Click Element At Coordinates    945    2121    # Click en el botón de usuarios usando coordenadas
-    Wait Until Page Contains    Resumen de usuarios    ${TIMEOUT}    # Verifica que llegó a la pantalla
-    Capture Page Screenshot    CantidadDeUsuarios.png    # Captura el estado inicial
+    [Documentation]    Navega a la sección de usuarios usando múltiples estrategias
+    # Intenta primero usando el selector xpath con bounds
+    ${element_visible}=    Run Keyword And Return Status
+    ...    Wait Until Element Is Visible    ${USERS_BUTTON}    5s
+    
+    # Si el elemento es visible, haz clic en él
+    Run Keyword If    ${element_visible}    Click Element    ${USERS_BUTTON}
+    ...    ELSE    Click Element At Coordinates    ${USERS_SECTION_X}    ${USERS_SECTION_Y}
+    
+    # Verifica que llegamos a la pantalla correcta
+    Wait Until Page Contains    Resumen de usuarios    ${TIMEOUT}
+    Capture Page Screenshot    CantidadDeUsuarios.png
 
 Fill User Form
     [Arguments]    ${name}    ${lastname}    ${phone}    ${email}    # Recibe los datos del usuario
