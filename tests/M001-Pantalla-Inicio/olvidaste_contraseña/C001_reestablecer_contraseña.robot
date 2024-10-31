@@ -24,6 +24,27 @@ ${INVALID_EMAIL_ERROR}      El formato del email es incorrecto
 ${SUCCESS_MESSAGE}         Revisa tu casilla de correo para continuar
 ${TIMEOUT}                 10s
 
+*** Keywords ***
+Click Element Safe
+    [Arguments]    ${primary_locator}    ${backup_locator}
+    Wait Until Keyword Succeeds    3x    2s    Run Keyword And Return Status
+    ...    Run Keywords
+    ...    Wait Until Element Is Visible    ${primary_locator}    5s
+    ...    AND    Click Element    ${primary_locator}
+    ...    ELSE    Run Keywords
+    ...    Wait Until Element Is Visible    ${backup_locator}    5s
+    ...    AND    Click Element    ${backup_locator}
+
+Input Text Safe
+    [Arguments]    ${primary_locator}    ${backup_locator}    ${text}
+    Wait Until Keyword Succeeds    3x    2s    Run Keyword And Return Status
+    ...    Run Keywords
+    ...    Wait Until Element Is Visible    ${primary_locator}    5s
+    ...    AND    Input Text    ${primary_locator}    ${text}
+    ...    ELSE    Run Keywords
+    ...    Wait Until Element Is Visible    ${backup_locator}    5s
+    ...    AND    Input Text    ${backup_locator}    ${text}
+
 *** Test Cases ***
 Formato de correo no valido
     [Documentation]    Verifica que se muestre un mensaje de error cuando se ingresa un email con formato inválido
@@ -32,13 +53,15 @@ Formato de correo no valido
     Conectar dispositivo
     
     # Navegar a la pantalla de recuperación
-    Click Element Safe    ${FORGOT_PASSWORD_BUTTON}    ${FORGOT_PASSWORD_XPATH}
+    Wait Until Element Is Visible    ${FORGOT_PASSWORD_BUTTON}    ${TIMEOUT}
+    Click Element    ${FORGOT_PASSWORD_BUTTON}
     
     # Verificar que estamos en la pantalla correcta
     Wait Until Page Contains    ${RECOVERY_TITLE}    ${TIMEOUT}
     
     # Ingresar email con formato inválido
-    Input Text Safe    ${EMAIL_INPUT}    ${EMAIL_INPUT_XPATH}    ${formato-invalido}
+    Wait Until Element Is Visible    ${EMAIL_INPUT}    ${TIMEOUT}
+    Input Text    ${EMAIL_INPUT}    ${formato-invalido}
     
     # Verificar mensaje de error
     Wait Until Page Contains    ${INVALID_EMAIL_ERROR}    ${TIMEOUT}
@@ -51,10 +74,12 @@ Reseteo exitoso
     Wait Until Page Contains    ${RECOVERY_TITLE}    ${TIMEOUT}
     
     # Ingresar email válido (sobrescribirá cualquier texto existente)
-    Input Text Safe    ${EMAIL_INPUT}    ${EMAIL_INPUT_XPATH}    ${reseteo-de-correo}
+    Wait Until Element Is Visible    ${EMAIL_INPUT}    ${TIMEOUT}
+    Input Text    ${EMAIL_INPUT}    ${reseteo-de-correo}
     
     # Enviar solicitud de recuperación
-    Click Element Safe    ${SEND_RECOVERY_BUTTON}    ${SEND_RECOVERY_XPATH}
+    Wait Until Element Is Visible    ${SEND_RECOVERY_BUTTON}    ${TIMEOUT}
+    Click Element    ${SEND_RECOVERY_BUTTON}
     
     # Verificar mensaje de confirmación
     Wait Until Page Contains    ${SUCCESS_MESSAGE}    ${TIMEOUT}
