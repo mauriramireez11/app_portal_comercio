@@ -11,32 +11,35 @@ Resource            ../../../resources/variables.robot
 # Selectores principales usando UiSelector
 ${FORGOT_PASSWORD_BUTTON}    android=new UiSelector().text("¿Olvidaste tu contraseña?")
 ${EMAIL_INPUT}              android=new UiSelector().text("Ingresa tu email")
-${SEND_RECOVERY_BUTTON}     android=new UiSelector().text("Enviar recuperación")
+${SEND_RECOVERY_BUTTON}     android=new UiSelector().text("Enviar recuperación")    
 ${RECOVERY_TITLE_BUTTON}    android=new UiSelector().text("Recuperar acceso")
 
 # Selectores de respaldo usando xpath
 ${FORGOT_PASSWORD_XPATH}     xpath=//android.widget.TextView[@text="¿Olvidaste tu contraseña?"]
 ${EMAIL_INPUT_XPATH}        xpath=//android.widget.EditText[@text="Ingresa tu email"]
-${SEND_RECOVERY_XPATH}      xpath=//android.widget.TextView[@text="Enviar recuperación"]
+${SEND_RECOVERY_XPATH}      xpath=//android.widget.TextView[@text="Enviar recuperación"]    
 ${RECOVERY_TITLE_XPATH}     xpath=//android.widget.TextView[@text="Recuperar acceso"]
-
-# Mensajes y timeouts
-${INVALID_EMAIL_ERROR}      El formato del email es incorrecto
-${RECOVERY_TITLE}          Recuperar acceso
-${SUCCESS_MESSAGE}         Revisa tu casilla de correo para continuar
-${TIMEOUT}                 10s
 
 *** Keywords ***
 Click Element Safe
     [Arguments]    ${primary_locator}    ${backup_locator}
-    Wait Until Keyword Succeeds    3x    2s
+    Wait Until Keyword Succeeds    3x    2s    Run Keyword And Return Status
     ...    Run Keywords
-    ...    Wait Until Element Is Visible    ${primary_locator}    5s    AND
-    ...    Click Element    ${primary_locator}
-    ...    ELSE
+    ...    Wait Until Element Is Visible    ${primary_locator}    5s
+    ...    AND    Click Element    ${primary_locator}
+    ...    ELSE    Run Keywords
+    ...    Wait Until Element Is Visible    ${backup_locator}    5s
+    ...    AND    Click Element    ${backup_locator}
+
+Input Text Safe
+    [Arguments]    ${primary_locator}    ${backup_locator}    ${text}
+    Wait Until Keyword Succeeds    3x    2s    Run Keyword And Return Status
     ...    Run Keywords
-    ...    Wait Until Element Is Visible    ${backup_locator}    5s    AND
-    ...    Click Element    ${backup_locator}
+    ...    Wait Until Element Is Visible    ${primary_locator}    5s
+    ...    AND    Input Text    ${primary_locator}    ${text}
+    ...    ELSE    Run Keywords
+    ...    Wait Until Element Is Visible    ${backup_locator}    5s
+    ...    AND    Input Text    ${backup_locator}    ${text}
 
 Input Text Safe
     [Arguments]    ${primary_locator}    ${backup_locator}    ${text}
