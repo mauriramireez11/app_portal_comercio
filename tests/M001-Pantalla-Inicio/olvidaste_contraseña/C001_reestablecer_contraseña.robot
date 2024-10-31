@@ -10,12 +10,12 @@ Resource            ../../../resources/variables.robot
 *** Variables ***
 # Selectores principales usando UiSelector
 ${FORGOT_PASSWORD_BUTTON}    android=new UiSelector().text("¿Olvidaste tu contraseña?")
-${EMAIL_INPUT}              android=new UiSelector().text("Ingresa tu email")
+${EMAIL_INPUT}              class=android.widget.EditText
 ${SEND_RECOVERY_BUTTON}     android=new UiSelector().text("Enviar recuperaciòn")
 
 # Selectores de respaldo usando xpath
 ${FORGOT_PASSWORD_XPATH}     xpath=//android.widget.TextView[@text="¿Olvidaste tu contraseña?"]
-${EMAIL_INPUT_XPATH}        xpath=//android.widget.EditText[@text="Ingresa tu email"]
+${EMAIL_INPUT_XPATH}        xpath=//android.widget.EditText
 ${SEND_RECOVERY_XPATH}      xpath=//android.widget.TextView[@text="Enviar recuperaciòn"]
 
 # Textos y mensajes
